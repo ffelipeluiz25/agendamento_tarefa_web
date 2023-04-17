@@ -1,0 +1,62 @@
+<ng-template #modalArquivo size="lg" let-c="close" let-d="dismiss">
+    <div class="modal-header border-none p-b-0">
+        <h4 class="card-title m-0">Arquivo Tarefa</h4>
+        <button type="button" class="close" aria-label="Close" (click)="fechar()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <ngx-file-drop [dropZoneLabel]="dropfileText" customstyle="drop-zone-custom"
+                    (onFileDrop)="dropped($event)" (click)="triggerFileInput(fileInputId);">
+                    <span>FELIPE</span>
+                </ngx-file-drop>
+                <input type="file" style="display: none;" [id]="fileInputId" (change)="onSelectFile($event.target)"
+                    accept=".pdf">
+                <span class="error-message" *ngIf="invalidFormat">Somente arquivos .pdf</span>
+                <span class="error-message" *ngIf="invalidFileSize">Somente arquivos de tamanho 15mb.</span>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="text-center" scope="col">Nome Arquivo</th>
+                                <th class="text-center" scope="col">Extensão</th>
+                                <th class="text-center" scope="col">Data Finalização</th>
+                                <th class="text-center" scope="col">
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let arquivo of arquivos">
+                                <td class="text-center">{{arquivo.nomeArquivo}}</td>
+                                <td class="text-center">{{arquivo.extensao}}</td>
+                                <td class="text-center">{{arquivo.dataCriacao | date: 'MM/dd/yyyy'}}</td>
+                                <td class="action-tarefa">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary" data-toggle="dropdown"
+                                            aria-haspopup="true" (click)="download(arquivo.id,arquivo.tarefaId)"
+                                            aria-expanded="false">Download
+                                            Arquivo</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn grey btn-outline-secondary" (click)="fechar()">Fechar</button>
+        <button type="button" class="btn grey btn-outline-secondary" (click)="salvar()">Salvar</button>
+    </div>
+</ng-template>

@@ -1,0 +1,80 @@
+<app-menu></app-menu>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-6">
+        <fieldset class="form-group">
+            <label for="tarefa">Busca</label>
+            <input type="text" (keyup)="keyUp()" name="tarefa" [(ngModel)]="term" class="form-control" id="tarefa"
+                placeholder="Ex: Em Andamento, Finalizada,'25/02/1989' ">
+        </fieldset>
+    </div>
+    <div class="col-md-2">
+        <button class="btn btn-primary btn-criar-agendamento" (click)="criarAgendamento()">+ Criar Agendamento</button>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-center" scope="col">Id</th>
+                        <th class="text-center" scope="col">Id usuario</th>
+                        <th class="text-center" scope="col">Data de Agendamento</th>
+                        <th class="text-center" scope="col">Em Andamento na Data</th>
+                        <th class="text-center" scope="col">Data Finalização</th>
+                        <th class="text-center" scope="col">Duração</th>
+                        <th class="text-center" scope="col">Status</th>
+                        <th class="text-center" scope="col">Usuario</th>
+                        <th class="text-center" scope="col">
+                        </th>
+                        <th class="text-center" scope="col">
+                        </th>
+                        <th class="text-center" scope="col">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let tarefa of tarefas">
+                        <th class="text-center">{{tarefa.id}}</th>
+                        <th class="text-center">{{tarefa.usuarioId}}</th>
+                        <td class="text-center">{{tarefa.dataInicio | date: 'MM/dd/yyyy hh:mm a'}}</td>
+                        <td class="text-center">{{tarefa.dataEmAndamento | date: 'MM/dd/yyyy hh:mm a'}}</td>
+                        <td class="text-center">{{tarefa.dataFinalizacao | date: 'MM/dd/yyyy hh:mm a'}}</td>
+                        <td class="text-center">{{tarefa.duracao}}</td>
+                        <td class="text-center">{{tarefa.status}}</td>
+                        <td class="text-center">{{tarefa.usuario}}</td>
+                        <td class="action-tarefa">
+                            <div class="btn-group">
+                                <button type="button" *ngIf="tarefa.status == 'Agendada'"
+                                    (click)="statusEmAndamento(tarefa.usuarioId)" class="btn btn-primary"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Iniciar
+                                    Tarefa</button>
+                            </div>
+                        </td>
+                        <td class="action-tarefa">
+                            <div class="btn-group">
+                                <button type="button" *ngIf="tarefa.status == 'Em Andamento'"
+                                    (click)="statusFinalizarTarefa(tarefa.usuarioId)" class="btn btn-primary"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Finalizar
+                                    Tarefa</button>
+                            </div>
+                        </td>
+                        <td class="action-tarefa">
+                            <div class="btn-group">
+                                <button type="button" *ngIf="tarefa.status == 'Em Andamento'"
+                                    (click)="anexarArquivo(tarefa.id)" class="btn btn-primary" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">Anexar
+                                    Arquivo</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+<app-modal-arquivo #modalArquivo (close-event)="closeArquivo()"></app-modal-arquivo>

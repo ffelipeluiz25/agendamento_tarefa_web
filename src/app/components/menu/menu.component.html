@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <ul class="navbar-nav">
+            <li mdbDropdown class="nav-item dropdown">
+                <a (click)="toggleMenu()" class="nav-link dropdown-toggle d-flex align-items-center img-menu"
+                    id="navbarDropdownMenuLink" role="button" mdbDropdownToggle aria-expanded="false">
+                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img (3).webp" class="rounded-circle"
+                        height="22" />
+                </a>
+                <ul mdbDropdownMenu class="dropdown-menu tooltip-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li>
+                        <a class="dropdown-item" (click)="tarefas()">Tarefas</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" (click)="usuarios()">Usuário</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>

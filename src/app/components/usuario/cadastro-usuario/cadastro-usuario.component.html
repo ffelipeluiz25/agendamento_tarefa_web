@@ -1,0 +1,34 @@
+<app-menu></app-menu>
+<form #usuarioForm="ngForm" autocomplete="off">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-2">
+            <fieldset class="form-group" [ngClass]="{'has-error': !nome_field.valid && nome_field.touched }">
+                <label for="nomeUsuario">Nome</label>
+                <input type="text" name="nomeUsuario" required #nome_field="ngModel" [(ngModel)]="model.nome"
+                    class="form-control" id="nomeUsuario" placeholder="Ex: Carlos">
+                <div *ngIf="!nome_field.valid && nome_field.touched" class="help-block font-small-3">
+                    <span class="error-message" *ngIf="nome_field.errors">*Nome é obrigatório</span>
+                </div>
+            </fieldset>
+        </div>
+        <div class="col-md-2">
+            <fieldset class="form-group" [ngClass]="{'has-error': !sobrenome_field.valid && sobrenome_field.touched }">
+                <label for="sobrenomeUsuario">Sobrenome</label>
+                <input type="text" name="sobrenomeUsuario" required #sobrenome_field="ngModel"
+                    [(ngModel)]="model.sobrenome" class="form-control" id="sobrenomeUsuario"
+                    placeholder="Ex: Augusto">
+                <div *ngIf="!sobrenome_field.valid && sobrenome_field.touched" class="help-block font-small-3">
+                    <span class="error-message" *ngIf="sobrenome_field.errors">*Sobrenome é obrigatório</span>
+                </div>
+            </fieldset>
+        </div>
+        <div class="col-md-1">
+            <button class="btn btn-secondary btn-voltar" (click)="voltar()">Voltar</button>
+        </div>
+        <div class="col-md-1">
+            <button class="btn btn-primary btn-cadastrar-usuario" (click)="cadastrar()">Cadastrar Usuario</button>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</form>

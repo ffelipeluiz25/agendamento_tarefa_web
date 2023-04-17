@@ -1,0 +1,31 @@
+<app-menu></app-menu>
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="typeahead-basic">Usuario</label>
+            <input id="typeahead-basic" type="text" class="form-control" [(ngModel)]="model.usuario"
+                [ngbTypeahead]="search" (click)="click$.next($any($event).target.value)"
+                (selectItem)="selectItem($event)" />
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group">
+            <label for="dataInicio">Data Agendamento da Tarefa</label>
+            <input type="text" [(ngModel)]="model.dataInicio" class="form-control" id="dataInicio"
+                placeholder="YYYY-MM-ddThh:mm:ss">
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group">
+            <label for="duracao">Duracao</label>
+            <input type="number" [(ngModel)]="model.duracao" class="form-control" id="duracao" placeholder="Duracao">
+        </div>
+    </div>
+    <div class="col-md-1">
+        <button class="btn btn-secondary btn-voltar" (click)="voltar()">Voltar</button>
+    </div>
+    <div class="col-md-1">
+        <button class="btn btn-primary btn-agendar" (click)="agendar()">Agendar</button>
+    </div>
+</div>

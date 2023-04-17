@@ -1,0 +1,42 @@
+<app-menu></app-menu>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-6">
+        <fieldset class="form-group">
+            <label for="nomeUsuario">Busca</label>
+            <input type="text" (keyup)="keyUp()" name="nomeUsuario" [(ngModel)]="term" class="form-control"
+                id="nomeUsuario" placeholder="Ex: Joao Silva">
+        </fieldset>
+    </div>
+    <div class="col-md-2">
+        <button class="btn btn-primary btn-adicionar" (click)="adicionarUsuario()">+ Adicionar</button>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+<br>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-center" scope="col">Identificacao</th>
+                        <th class="text-center" scope="col">Nome</th>
+                        <th class="text-center" scope="col">Sobrenome</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let usuario of usuarios_filter">
+
+                        <td>{{usuario.id}}</td>
+                        <td>{{usuario.nome}}</td>
+                        <td>{{usuario.sobrenome}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</div>

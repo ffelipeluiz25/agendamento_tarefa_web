@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+.fix-modal-backdrop-zindex {
+    z-index: 999 !important;
+}
+
+.fix-modal-zindex {
+    z-index: 1000 !important;
+}
+
+.fix-modal-zindex-upper-swal {
+    z-index: 1100 !important;
+}
+
+.fix-modal-backdrop-zindex-upper-swal {
+    z-index: 1099 !important;
+}
