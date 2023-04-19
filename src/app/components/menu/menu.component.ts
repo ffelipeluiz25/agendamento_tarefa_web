@@ -45,7 +45,6 @@ export class MenuComponent implements OnInit {
             ulTarefa[0].classList.remove('active');
 
         ulTarefa[0].classList.add('active');
-        this.router.navigate(['/tarefa']);
     }
 
     usuariosNegrito() {
@@ -62,16 +61,17 @@ export class MenuComponent implements OnInit {
             ulUsuario[0].classList.remove('active');
 
         ulUsuario[0].classList.add('active');
-        this.router.navigate(['/usuario']);
     }
 
     tarefas() {
         this.toggleMenu();
+        this.tarefasNegrito();
         this.router.navigate(['/tarefa']);
     }
 
     usuarios() {
         this.toggleMenu();
+        this.usuariosNegrito();
         this.router.navigate(['/usuario']);
     }
 }
