@@ -1,8 +1,26 @@
-.btn-agendar{
+.btn-agendar {
     margin-top: 23%;
 }
 
-.btn-voltar{
+.btn-voltar {
     float: right;
     margin-top: 23%;
+}
+
+.dataInicio {
+    display: none;
+}
+
+.not-show {
+    display: none;
+}
+
+.calendar {
+    margin-top: 29%;
+    margin-left: -20%;
+    cursor: pointer;
+}
+
+.data-ng{
+    margin-top: -30%;
 }

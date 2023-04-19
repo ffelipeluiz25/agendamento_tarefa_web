@@ -6,6 +6,9 @@ import { Component, OnInit } from "@angular/core";
 import { Usuarios } from "src/app/model/usuario";
 import { Observable, Subject, of } from 'rxjs';
 import { Router } from '@angular/router';
+import { NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
+import { TooltipPosition } from '@angular/material/tooltip';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-cadastro-tarefa',
@@ -19,12 +22,50 @@ export class CadastroTarefaComponent implements OnInit {
   public searchFailed = true;
   click$ = new Subject<string>();
   public usuarios: any;
+  public dataInicio: any;
+  public date: { year: number; month: number };
+  public positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
+  public position = new FormControl(this.positionOptions[0]);
 
-  constructor(private router: Router, private utilService: UtilityService, private api: ApiService, private searchService: SearchService) { }
+  constructor(private calendar: NgbCalendar, private router: Router, private utilService: UtilityService, private api: ApiService, private searchService: SearchService) { }
 
   async ngOnInit() {
-    this.model = { dataInicio: '', usuario: '', usuarioId: 0, duracao: '' };
+    this.model = { dataInicio: '', dataInicioFormatada: '', usuario: '', usuarioId: 0, duracao: '' };
     await this.recuperaUsuarios();
+  }
+
+  clickCalendar() {
+    var element: HTMLCollection;
+    element = document.getElementsByClassName('dataNg');
+    if (element[0].classList.contains('not-show'))
+      element[0].classList.remove('not-show');
+    else
+      element[0].classList.add('not-show');
+  }
+
+  clickDataInicio() {
+    var data = new Date(2023, this.dataInicio.month, this.dataInicio.day);
+    this.model.dataInicio = data.toISOString();
+
+    const yyyy = data.getFullYear();
+    let mm = data.getMonth() + 1; // Months start at 0!
+    let dd = data.getDate();
+    let sdd: string;
+    let smm: string;
+
+    sdd = dd.toString();
+    smm = mm.toString();
+
+    if (dd < 10) sdd = '0' + dd;
+    if (mm < 10) smm = '0' + mm;
+
+    const formattedToday = sdd + '/' + smm + '/' + yyyy;
+    this.model.dataInicioFormatada = formattedToday;
+    this.clickCalendar();
+  }
+
+  selectToday() {
+    this.model = this.calendar.getToday();
   }
 
   async recuperaUsuarios() {

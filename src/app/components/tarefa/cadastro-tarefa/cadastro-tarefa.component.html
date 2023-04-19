@@ -4,6 +4,7 @@
     <div class="col-md-4">
         <div class="form-group">
             <label for="typeahead-basic">Usuario</label>
+            <span class="material-icons" matTooltip="Utilizar o autocomplete no campo usuário">help_center</span>
             <input id="typeahead-basic" type="text" class="form-control" [(ngModel)]="model.usuario"
                 [ngbTypeahead]="search" (click)="click$.next($any($event).target.value)"
                 (selectItem)="selectItem($event)" />
@@ -11,16 +12,21 @@
     </div>
     <div class="col-md-2">
         <div class="form-group">
-            <label for="dataInicio">Data Agendamento da Tarefa</label>
-            <input type="text" [(ngModel)]="model.dataInicio" class="form-control" id="dataInicio"
-                placeholder="YYYY-MM-ddThh:mm:ss">
+            <label for="duracao">Duracao</label>
+            <input type="number" [(ngModel)]="model.duracao" class="form-control" id="duracao" placeholder="Duracao">
         </div>
     </div>
     <div class="col-md-2">
         <div class="form-group">
-            <label for="duracao">Duracao</label>
-            <input type="number" [(ngModel)]="model.duracao" class="form-control" id="duracao" placeholder="Duracao">
+            <label for="dataInicio">Data Agendamento da Tarefa</label>
+            <input type="text" [(ngModel)]="model.dataInicio" class="form-control dataInicio" id="dataInicio">
+            <input type="text" disabled [(ngModel)]="model.dataInicioFormatada" class="form-control" id="dataInicio">
         </div>
+    </div>
+    <div class="col-md-1">
+        <span (click)="clickCalendar()" class="material-icons blue-color calendar">calendar_today</span>
+        <ngb-datepicker #d [(ngModel)]="dataInicio" (click)="clickDataInicio();d.toggle();"
+            (navigate)="date = $event.next" class="-ng not-show"></ngb-datepicker>
     </div>
     <div class="col-md-1">
         <button class="btn btn-secondary btn-voltar" (click)="voltar()">Voltar</button>

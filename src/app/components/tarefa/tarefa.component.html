@@ -40,9 +40,9 @@
                     <tr *ngFor="let tarefa of tarefas">
                         <th class="text-center">{{tarefa.id}}</th>
                         <th class="text-center">{{tarefa.usuarioId}}</th>
-                        <td class="text-center">{{tarefa.dataInicio | date: 'MM/dd/yyyy hh:mm a'}}</td>
-                        <td class="text-center">{{tarefa.dataEmAndamento | date: 'MM/dd/yyyy hh:mm a'}}</td>
-                        <td class="text-center">{{tarefa.dataFinalizacao | date: 'MM/dd/yyyy hh:mm a'}}</td>
+                        <td class="text-center">{{tarefa.dataInicio | date: 'dd/MM/yyyy hh:mm'}}</td>
+                        <td class="text-center">{{tarefa.dataEmAndamento | date: 'dd/MM/yyyy hh:mm'}}</td>
+                        <td class="text-center">{{tarefa.dataFinalizacao | date: 'dd/MM/yyyy hh:mm'}}</td>
                         <td class="text-center">{{tarefa.duracao}}</td>
                         <td class="text-center">{{tarefa.status}}</td>
                         <td class="text-center">{{tarefa.usuario}}</td>
