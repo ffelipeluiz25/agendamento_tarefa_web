@@ -11,12 +11,13 @@ import { NgForm } from "@angular/forms";
 })
 
 export class UsuarioComponent implements OnInit {
+    @ViewChild('usuarioForm', { static: true }) usuarioForm: NgForm;
     public usuarios: any;
     public usuarios_filter: any;
     public model: any;
     public term = '';
     public page = 1;
-    @ViewChild('usuarioForm', { static: true }) usuarioForm: NgForm;
+    public page_usuario = 'usuario';
 
     constructor(private router: Router, private api: ApiService, private searchPipe: Ng2SearchPipe) { }
 

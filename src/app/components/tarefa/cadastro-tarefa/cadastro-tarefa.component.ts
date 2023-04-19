@@ -17,7 +17,6 @@ import { FormControl } from '@angular/forms';
 })
 
 export class CadastroTarefaComponent implements OnInit {
-
   public model: any;
   public searchFailed = true;
   click$ = new Subject<string>();

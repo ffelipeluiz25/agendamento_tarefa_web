@@ -1,9 +1,16 @@
 .img-menu {
     border-radius: 50%!important;
-    padding-left: 90%;
-    margin: 1px 1px 1px 1700px;
+    margin: 0% 0% 0% 3300%;
 }
 
 .tooltip-menu {
-    margin: 1px 1px 1px 1700px;
+    margin: 0% 0% 0% 3080%;
+}
+
+.menu-tarefa{
+    cursor: pointer;
+}
+
+.menu-usuario{
+    cursor: pointer;
 }

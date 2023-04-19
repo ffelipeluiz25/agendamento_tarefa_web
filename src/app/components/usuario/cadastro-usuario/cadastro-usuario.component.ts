@@ -12,8 +12,9 @@ import { NgForm } from "@angular/forms";
 })
 
 export class CadastroUsuarioComponent implements OnInit {
-    public model: any;
     @ViewChild('usuarioForm', { static: true }) usuarioForm: NgForm;
+    public model: any;
+    public page_usuario = 'usuario';
 
     constructor(private router: Router, private utilService: UtilityService, private formValidator: FormValidationService, private api: ApiService) { }
 
