@@ -26,7 +26,7 @@
     <div class="col-md-1">
         <span (click)="clickCalendar()" class="material-icons blue-color calendar">calendar_today</span>
         <ngb-datepicker #d [(ngModel)]="dataInicio" (click)="clickDataInicio();d.toggle();"
-            (navigate)="date = $event.next" class="-ng not-show"></ngb-datepicker>
+            (navigate)="date = $event.next" class="-ng not-show data-ng"></ngb-datepicker>
     </div>
     <div class="col-md-1">
         <button class="btn btn-secondary btn-voltar" (click)="voltar()">Voltar</button>

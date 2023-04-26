@@ -35,7 +35,7 @@ export class CadastroTarefaComponent implements OnInit {
 
   clickCalendar() {
     var element: HTMLCollection;
-    element = document.getElementsByClassName('dataNg');
+    element = document.getElementsByClassName('data-ng');
     if (element[0].classList.contains('not-show'))
       element[0].classList.remove('not-show');
     else
